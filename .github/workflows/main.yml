@@ -21,6 +21,6 @@ jobs:
         run: nuget restore GitTestAction.sln
         
       - name: Build application
-        run: msbuild GitTestAction.sln
+        run: msbuild.exe GitTestAction.sln
 
    
