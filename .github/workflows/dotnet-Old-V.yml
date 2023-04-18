@@ -16,6 +16,7 @@ jobs:
       - name: Setup Nuget
         uses: Nuget/Setup-nuget@v1.0.2
         
+        
       - name: Restore Nuget
         run: nuget restore GitTestAction.sln
         
