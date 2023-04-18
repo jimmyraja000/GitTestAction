@@ -13,6 +13,6 @@ jobs:
       - name: Setup MSBuild path
         uses: microsoft/setup-msbuild@v1.0.2
       - name: Build application
-        run: msbuild.exe GitTestAction.sln /p:Configuration=Release
+        run: msbuild.exe GitTestAction.sln --Configuration Release
 
    
