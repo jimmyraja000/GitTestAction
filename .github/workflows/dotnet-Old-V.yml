@@ -1,12 +1,9 @@
-
-
-name: .NET WA 4.8
-
+name: publish 
 on:
+  workflow_dispatch:
   push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+    branches:
+      - main
 
 jobs:
   build:
