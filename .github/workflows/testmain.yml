@@ -1,0 +1,49 @@
+name: publish 
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+# env:
+#   AZURE_WEBAPP_NAME: gitacdevweb
+#   AZURE_WEBAPP_PACKAGE_PATH: "./publish" 
+      
+jobs:
+  publish:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+     
+      - name: setup .Net
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '4.8.x'
+      
+      - name: restore
+        run: dotnet restore ./GitTestAction.csproj
+      
+      - name: build
+        run: dotnet build ./GitTestAction.csproj --configuration Release --no-restore
+      
+      - name: publish
+        run: dotnet publish ./GitTestAction.csproj  --configuration Release --no-build 
+
+
+        
+#       - name: Deploy to IIS
+#         uses: warrenbuckley/DeployIISWebsite@master
+#         with:
+#           websiteName: gitacdevweb
+#           webDeployPackage: '${{ github.workflows }}/publish'
+
+#         env:
+#           SERVER: 'http://localhost:80'
+
+
+#       - name: Deployment
+#         uses: Azure/webapps-deploy@v2
+#         with:
+#           app-name: ${{env.AZURE_WEBAPP_NAME}}
+#           publish-profile: ${{secrets.AZURE_PUBLISH_PROFILE}}
+#           package: "${{env.AZURE_WEBAPP_PACKAGE_PATH}}"
