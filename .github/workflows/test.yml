@@ -31,5 +31,4 @@ jobs:
       run: msbuild GitTestAction.sln /p:Configuration=Release
       
     - name: run dir
-      run: dir D:\a\GitTestAction\ && dir D:\a\GitTestAction\GitTestAction\ &&  D:\a\GitTestAction\GitTestAction\bin && D:\a\GitTestAction\GitTestAction\packages\ && C:\programfiles\bin\obj\Release
-      
+      run: dir D:\a\GitTestAction\ && dir D:\a\GitTestAction\GitTestAction\ &&  D:\a\GitTestAction\GitTestAction\bin\ && D:\a\GitTestAction\GitTestAction\obj\Release\
