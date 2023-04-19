@@ -17,4 +17,4 @@ jobs:
     - name: Build and Test
       run: |
         msbuild /p:Configuration=Release
-        vstest.console.exe bin/Release/YourWebFormApplication.Tests.dll
+        vstest.console.exe bin/Release/GitTestAction.Tests.dll
