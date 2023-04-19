@@ -1,4 +1,4 @@
-name: publish 
+name: publish2
 on:
   push:
     branches: [ "master" ]
