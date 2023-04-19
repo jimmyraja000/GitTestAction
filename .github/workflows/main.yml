@@ -1,0 +1,27 @@
+name: publish2
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+jobs:
+  build:
+    runs-on: windows-latest
+    env:
+      NUGET: ${{env.NUGET}}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup MSBuild path
+        uses: microsoft/setup-msbuild@v1.0.2
+        
+      - name: Setup Nuget
+        uses: Nuget/Setup-nuget@v1.0.2
+        
+        
+      - name: Restore Nuget
+        run: nuget restore GitTestAction.sln
+        
+      - name: Build application
+        run: msbuild.exe GitTestAction.sln
+
+   

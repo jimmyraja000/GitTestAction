@@ -1,0 +1,20 @@
+name: Build and Test2
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Framework
+      uses: microsoft/setup-msbuild@v1.0.2
+      with:
+        net-version: '4.8'
+    - name: Build and Test
+      run: |
+        msbuild /p:Configuration=Release
+        vstest.console.exe bin/Release/GitTestAction.Tests.dll
