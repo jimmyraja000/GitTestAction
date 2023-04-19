@@ -1,0 +1,18 @@
+name: Build and Test
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Framework
+      uses: microsoft/setup-msbuild@v1.0.2
+      with:
+        net-version: '4.8'
+    - name: Build and Test
+      run: |
+        msbuild /p:Configuration=Release
+        vstest.console.exe bin/Release/YourWebFormApplication.Tests.dll
