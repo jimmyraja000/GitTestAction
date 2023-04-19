@@ -29,3 +29,6 @@ jobs:
 
     - name: Build the Solution
       run: msbuild GitTestAction.sln /p:Configuration=Release
+      
+    - name: run dir
+      run: dir D:\a\
